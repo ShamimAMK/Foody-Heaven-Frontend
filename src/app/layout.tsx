@@ -1,8 +1,9 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import MyAuth0Provider from "@/provider/MyAuth0Provider";
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -11,20 +12,20 @@ export const metadata: Metadata = {
 	description: "Food order App",
 };
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
-		<html lang="en" className="scroll-smooth">
-			<body className={rubik.className}>
-				<main className="min-h-screen flex flex-col">
-					<Header />
-					<div className="flex-1"> {children}</div>
-				</main>
-				<Footer />
-			</body>
-		</html>
+		<MyAuth0Provider>
+			<html lang="en" className="scroll-smooth">
+				<body className={rubik.className}>
+					<main className="min-h-screen flex flex-col">
+						<Header />
+						<div className="flex-1"> {children}</div>
+					</main>
+					<Footer />
+				</body>
+			</html>
+		</MyAuth0Provider>
 	);
-}
+};
+
+export default RootLayout;
