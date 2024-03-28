@@ -123,7 +123,7 @@ const UserProfileForm = ({ isLoading, onSave }: Props) => {
 					{isLoading ? (
 						<span className="flex items-center gap-2">
 							{" "}
-							<Loader2 size={18} /> Submitting
+							<Loader2 size={18} className="animate-spin" /> Submitting
 						</span>
 					) : (
 						<span>Submit</span>
