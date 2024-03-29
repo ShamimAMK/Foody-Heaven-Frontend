@@ -27,11 +27,12 @@ const formSchema = z.object({
 export type UserFormDataType = z.infer<typeof formSchema>;
 
 interface Props {
+	currentUser;
 	isLoading: boolean;
 	onSave: (userProfileData: UserFormDataType) => void;
 }
 
-const UserProfileForm = ({ isLoading, onSave }: Props) => {
+const UserProfileForm = ({ currentUser, isLoading, onSave }: Props) => {
 	const form = useForm<UserFormDataType>({
 		resolver: zodResolver(formSchema),
 	});
