@@ -27,7 +27,7 @@ const formSchema = z.object({
 export type UserFormDataType = z.infer<typeof formSchema>;
 
 interface Props {
-	currentUser;
+	currentUser: any;
 	isLoading: boolean;
 	onSave: (userProfileData: UserFormDataType) => void;
 }
